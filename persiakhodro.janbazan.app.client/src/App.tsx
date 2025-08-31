@@ -1,58 +1,88 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import Layout from './components/Layout/Layout';
+import ProtectedRoute from './components/ProtectedRoute';
 
-interface Forecast {
-    date: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
-}
+// Auth Pages
+import LoginPage from './pages/auth/LoginPage';
+import RegisterPage from './pages/auth/RegisterPage';
+
+// Dashboard Pages
+import UserDashboard from './pages/dashboard/UserDashboard';
+import AdminDashboard from './pages/dashboard/AdminDashboard';
+
+// Profile Pages
+import ProfilePage from './pages/profile/ProfilePage';
+
+// Vehicle Pages
+import VehicleListPage from './pages/vehicles/VehicleListPage';
+import NewVehiclePage from './pages/vehicles/NewVehiclePage';
 
 function App() {
-    const [forecasts, setForecasts] = useState<Forecast[]>();
+  return (
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
 
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
+          {/* Protected Routes */}
+          <Route path="/" element={
+            <ProtectedRoute>
+              <Layout>
+                <Navigate to="/dashboard" replace />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tableLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Layout>
+                <UserDashboard />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-    return (
-        <div>
-            <h1 id="tableLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
-        </div>
-    );
+          <Route path="/admin" element={
+            <ProtectedRoute>
+              <Layout>
+                <AdminDashboard />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        if (response.ok) {
-            const data = await response.json();
-            setForecasts(data);
-        }
-    }
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Layout>
+                <ProfilePage />
+              </Layout>
+            </ProtectedRoute>
+          } />
+
+          <Route path="/vehicles" element={
+            <ProtectedRoute>
+              <Layout>
+                <VehicleListPage />
+              </Layout>
+            </ProtectedRoute>
+          } />
+
+          <Route path="/vehicles/new" element={
+            <ProtectedRoute>
+              <Layout>
+                <NewVehiclePage />
+              </Layout>
+            </ProtectedRoute>
+          } />
+
+          {/* Catch all route */}
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
 }
 
 export default App;

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
+import './App.css';
 
 // Auth Pages
 import LoginPage from './pages/auth/LoginPage';
@@ -15,6 +16,9 @@ import AdminDashboard from './pages/dashboard/AdminDashboard';
 // Profile Pages
 import ProfilePage from './pages/profile/ProfilePage';
 
+// Landing Page
+import LandingPage from './pages/LandingPage';
+
 // Vehicle Pages
 import VehicleListPage from './pages/vehicles/VehicleListPage';
 import NewVehiclePage from './pages/vehicles/NewVehiclePage';
@@ -25,16 +29,13 @@ function App() {
       <Router>
         <Routes>
           {/* Public Routes */}
+          <Route path="/landing" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
 
           {/* Protected Routes */}
           <Route path="/" element={
-            <ProtectedRoute>
-              <Layout>
-                <Navigate to="/dashboard" replace />
-              </Layout>
-            </ProtectedRoute>
+            <Navigate to="/landing" replace />
           } />
 
           <Route path="/dashboard" element={
@@ -78,7 +79,7 @@ function App() {
           } />
 
           {/* Catch all route */}
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="*" element={<Navigate to="/landing" replace />} />
         </Routes>
       </Router>
     </AuthProvider>

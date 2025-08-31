@@ -33,7 +33,10 @@ export const authService = {
       const payload = JSON.parse(atob(token.split('.')[1]));
       const currentTime = Date.now() / 1000;
       return payload.exp > currentTime;
-    } catch {
+    } catch (error) {
+      console.error('Error validating token:', error);
+      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
       return false;
     }
   },

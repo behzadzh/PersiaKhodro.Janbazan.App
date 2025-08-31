@@ -70,8 +70,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     const initAuth = async () => {
+      setIsLoading(true);
       if (authService.isAuthenticated()) {
-        await fetchUserProfile();
+        try {
+          await fetchUserProfile();
+        } catch (error) {
+          console.error('Failed to initialize auth:', error);
+          authService.logout();
+          setUser(null);
+        }
       }
       setIsLoading(false);
     };

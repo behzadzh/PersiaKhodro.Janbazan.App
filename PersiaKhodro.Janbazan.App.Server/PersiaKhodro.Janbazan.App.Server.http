@@ -1,0 +1,6 @@
+@PersiaKhodro.Janbazan.App.Server_HostAddress = http://localhost:5023
+
+GET {{PersiaKhodro.Janbazan.App.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

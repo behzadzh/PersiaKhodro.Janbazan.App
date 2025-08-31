@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "persiakhodro.janbazan.app.client", "persiakhodro.janbazan.app.client\persiakhodro.janbazan.app.client.esproj", "{9B516809-3C0A-A86B-202F-F8A5CA6BE06D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersiaKhodro.Janbazan.App.Server", "PersiaKhodro.Janbazan.App.Server\PersiaKhodro.Janbazan.App.Server.csproj", "{EF112BB9-1A4C-41F2-BDC2-65AD56403678}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B516809-3C0A-A86B-202F-F8A5CA6BE06D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B516809-3C0A-A86B-202F-F8A5CA6BE06D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B516809-3C0A-A86B-202F-F8A5CA6BE06D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9B516809-3C0A-A86B-202F-F8A5CA6BE06D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B516809-3C0A-A86B-202F-F8A5CA6BE06D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B516809-3C0A-A86B-202F-F8A5CA6BE06D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EF112BB9-1A4C-41F2-BDC2-65AD56403678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF112BB9-1A4C-41F2-BDC2-65AD56403678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF112BB9-1A4C-41F2-BDC2-65AD56403678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF112BB9-1A4C-41F2-BDC2-65AD56403678}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08FA39FD-AAF7-4F17-B5EB-81189241B544}
+	EndGlobalSection
+EndGlobal

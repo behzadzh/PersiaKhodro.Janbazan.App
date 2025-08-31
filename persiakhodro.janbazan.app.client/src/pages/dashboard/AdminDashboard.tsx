@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { Vehicle } from '../../types';
+import type { Vehicle } from '../../types';
 import api from '../../services/api';
 import { 
   Car, 

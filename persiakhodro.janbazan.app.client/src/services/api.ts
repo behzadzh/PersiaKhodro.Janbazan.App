@@ -1,5 +1,6 @@
-import axios, { AxiosResponse } from 'axios';
-import { AuthResponse, LoginUserDto, RegisterUserDto } from '../types';
+import axios from 'axios';
+import type { AxiosResponse } from 'axios';
+import type { AuthResponse, LoginUserDto, RegisterUserDto } from '../types';
 
 // Create axios instance with base configuration
 const api = axios.create({

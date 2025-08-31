@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { CreateVehicleDto } from '../../types';
+import type { CreateVehicleDto } from '../../types';
 import api from '../../services/api';
 import { Car, Save, ArrowRight, AlertCircle, CheckCircle } from 'lucide-react';
 import LoadingSpinner from '../../components/LoadingSpinner';

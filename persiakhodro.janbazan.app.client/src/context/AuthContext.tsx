@@ -23,6 +23,8 @@ export const useAuth = () => {
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  console.log('AuthProvider is rendering...');
+  
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -70,6 +72,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     const initAuth = async () => {
+      console.log('Initializing auth...');
       setIsLoading(true);
       if (authService.isAuthenticated()) {
         try {
@@ -81,11 +84,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
       }
       setIsLoading(false);
+      console.log('Auth initialization complete');
     };
 
     initAuth();
   }, []);
 
+  console.log('AuthProvider state:', { user, isAuthenticated, isLoading });
   return (
     <AuthContext.Provider
       value={{

@@ -5,6 +5,8 @@ import Layout from './components/Layout/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
+console.log('App.tsx is loading...');
+
 // Auth Pages
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
@@ -24,9 +26,13 @@ import VehicleListPage from './pages/vehicles/VehicleListPage';
 import NewVehiclePage from './pages/vehicles/NewVehiclePage';
 
 function App() {
+  console.log('App component is rendering...');
+  
   return (
     <AuthProvider>
       <Router>
+        <div>
+          <h1>Test - App is working</h1>
         <Routes>
           {/* Public Routes */}
           <Route path="/landing" element={<LandingPage />} />
@@ -81,6 +87,7 @@ function App() {
           {/* Catch all route */}
           <Route path="*" element={<Navigate to="/landing" replace />} />
         </Routes>
+        </div>
       </Router>
     </AuthProvider>
   );
